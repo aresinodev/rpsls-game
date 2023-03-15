@@ -1,0 +1,47 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 5rem;
+}
+
+.selected-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.selected-options .player-option {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.selected-options .computer-option {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8rem;
+}
+
+.options .option {
+  cursor: pointer;
+}
+
+.options .option img {
+  width: 6rem;
+}
+
+.options .option:hover > img {
+  fill: #0057b7;
+}

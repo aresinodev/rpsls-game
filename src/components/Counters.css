@@ -1,0 +1,26 @@
+.scoreboard-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scoreboard-title .player, .scoreboard-title .computer {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.scoreboard-title .vs {
+  font-weight: bold;
+  color: tomato;
+  font-size: 3rem;
+}
+
+.scoreboard-counters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 2rem;
+  padding-right: 4rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
