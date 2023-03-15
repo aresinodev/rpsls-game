@@ -12,11 +12,11 @@ import Counters from './components/Counters'
 import { useEffect } from 'react'
 
 const ELEMENTS = [
-  { id: 0, name: 'Rock', icon: rockIcon, win: [2, 3] },
-  { id: 1, name: 'Lizard', icon: lizardIcon, win: [5, 3] },
-  { id: 2, name: 'Spock', icon: spockIcon, win: [4, 1] },
-  { id: 3, name: 'Scissors', icon: scissorsIcon, win: [5, 2] },
-  { id: 4, name: 'Paper', icon: paperIcon, win: [1, 3] }
+  { id: 0, name: 'Rock', icon: rockIcon, win: [1, 2] },
+  { id: 1, name: 'Lizard', icon: lizardIcon, win: [4, 2] },
+  { id: 2, name: 'Spock', icon: spockIcon, win: [3, 0] },
+  { id: 3, name: 'Scissors', icon: scissorsIcon, win: [4, 1] },
+  { id: 4, name: 'Paper', icon: paperIcon, win: [0, 2] }
 ]
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
         const newComputer = ELEMENTS.find(element => element.id === index)
         setComputer(newComputer)
 
-          getWinner(newComputer)
+        getWinner(newComputer)
       }, 2000)
     }
 
