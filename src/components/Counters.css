@@ -1,3 +1,14 @@
+.scoreboard {
+  margin-top: 1rem;
+  flex: 1 1 0%;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(214, 215, 212);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
 .scoreboard-title {
   display: flex;
   justify-content: space-between;
@@ -5,8 +16,10 @@
 }
 
 .scoreboard-title .player, .scoreboard-title .computer {
+  flex: 1;
   font-weight: bold;
   font-size: 2rem;
+  color: #000000;
 }
 
 .scoreboard-title .vs {
@@ -19,8 +32,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 2rem;
-  padding-right: 4rem;
-  font-size: 1.5rem;
+  padding-left: 7rem;
+  padding-right: 7rem;
+  font-size: 2rem;
   font-weight: bold;
+  color: #000000;
 }
