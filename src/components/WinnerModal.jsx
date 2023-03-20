@@ -1,5 +1,5 @@
-export function WinnerModal ({ win, winner, resetGame, newGame }) {
-  if (winner === null) return null
+export function WinnerModal({ win, winner, resetGame, newGame }) {
+  if (win === null) return null
 
   const winnerText = win === false ? 'Empate' : 'Ganó: '
 
@@ -8,9 +8,13 @@ export function WinnerModal ({ win, winner, resetGame, newGame }) {
       <div className='text'>
         <h2 style={{ margin: 0 }}>{winnerText}</h2>
 
-        <header className='win'>
-          {winner}
-        </header>
+        {
+          winner && (
+            <header className='win'>
+              {winner}
+            </header>
+          )
+        }
 
         <footer>
           <button onClick={newGame}>Nueva partida</button>

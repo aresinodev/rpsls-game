@@ -15,7 +15,7 @@ function App() {
   const [computer, setComputer] = useState(null)
   const [computerCounter, setComputerCounter] = useState(0)
   const [winner, setWinner] = useState(null)
-  const [win, setWin] = useState(false)
+  const [win, setWin] = useState(null)
 
 
   useEffect(() => {
@@ -42,7 +42,7 @@ function App() {
     setPlayer(null)
     setComputer(null)
     setWinner(null)
-    setWin(false)
+    setWin(null)
   }
 
   const resetGame = () => {
@@ -51,7 +51,7 @@ function App() {
     setPlayerCounter(0)
     setComputerCounter(0)
     setWinner(null)
-    setWin(false)
+    setWin(null)
   }
 
   const getWinner = (computerValue) => {
