@@ -3,8 +3,6 @@
 ## Rock, paper, lizard, scissors, Spock the famous game in Big bang theory TV serie.
 
 <br/>
-<br/>
-<br/>
 
 #### Some images of the game
 
