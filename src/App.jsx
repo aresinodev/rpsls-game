@@ -1,30 +1,21 @@
 import { useState } from 'react'
+import { useEffect } from 'react'
+
+import confetti from 'canvas-confetti'
 
 import './App.css'
 
-import lizardIcon from './assets/images/lizard.svg'
-import rockIcon from './assets/images/rock.svg'
-import spockIcon from './assets/images/spock.svg'
-import scissorsIcon from './assets/images/scissors.svg'
-import paperIcon from './assets/images/paper.svg'
-
 import Counters from './components/Counters'
-import { useEffect } from 'react'
-
-const ELEMENTS = [
-  { id: 0, name: 'Rock', icon: rockIcon, win: [1, 2] },
-  { id: 1, name: 'Lizard', icon: lizardIcon, win: [4, 2] },
-  { id: 2, name: 'Spock', icon: spockIcon, win: [3, 0] },
-  { id: 3, name: 'Scissors', icon: scissorsIcon, win: [4, 1] },
-  { id: 4, name: 'Paper', icon: paperIcon, win: [0, 2] }
-]
+import { WinnerModal } from './components/WinnerModal'
+import { ELEMENTS } from './utils/constants'
 
 function App() {
   const [player, setPlayer] = useState(null)
   const [playerCounter, setPlayerCounter] = useState(0)
   const [computer, setComputer] = useState(null)
   const [computerCounter, setComputerCounter] = useState(0)
-  const [winner, setWinner] = useState(false)
+  const [winner, setWinner] = useState(null)
+  const [win, setWin] = useState(false)
 
 
   useEffect(() => {
@@ -50,7 +41,8 @@ function App() {
   const newGame = () => {
     setPlayer(null)
     setComputer(null)
-    setWinner(false)
+    setWinner(null)
+    setWin(false)
   }
 
   const resetGame = () => {
@@ -58,27 +50,27 @@ function App() {
     setComputer(null)
     setPlayerCounter(0)
     setComputerCounter(0)
-    setWinner(false)
+    setWinner(null)
+    setWin(false)
   }
 
   const getWinner = (computerValue) => {
-    console.log(player)
-    console.log(computerValue)
-
     if (player.id !== computerValue?.id) {
       const playerWinner = player.win.includes(computerValue?.id)
-      // TODO: De alguna forma mostramos el ganador
+      setWin(true)
 
       if (playerWinner) {
         setPlayerCounter(prev => prev + 1)
+        setWinner('Player')
       } else {
         setComputerCounter(prev => prev + 1)
+        setWinner('Computer')
       }
 
-      setWinner(true)
+      confetti()
+
     } else {
-      // TODO: Empate
-      console.log('EMPATE')
+      setWin(false)
     }
   }
 
@@ -87,17 +79,21 @@ function App() {
       <h1>RPLS game</h1>
       <Counters player={playerCounter} computer={computerCounter} />
 
-      <section className='selected-options'>
-        <div className='player-option'>
-          {player && <img src={player.icon} alt={player.name} style={{ width: '10rem' }} />}
-        </div>
+      {
+        (player || computer) && (
+          <section className={`selected-options ${player ? 'a-flip-top' : ''}`}>
+            <div className='player-option'>
+              {player && <img className='a-jello-vertical' src={player.icon} alt={player.name} style={{ width: '10rem' }} />}
+            </div>
 
-        <div className='computer-option'>
-          {computer && <img src={computer.icon} alt={computer.name} style={{ width: '10rem' }} />}
-        </div>
-      </section>
+            <div className='computer-option'>
+              {computer && <img className='a-jello-vertical' src={computer.icon} alt={computer.name} style={{ width: '10rem' }} />}
+            </div>
+          </section>
+        )
+      }
 
-      <ul className='options'>
+      <ul className={`options ${ player ? 'disabled' : '' }`}>
         {
           ELEMENTS.map(element => {
             return <li className='option' key={element.id} onClick={() => selectPlayer(element)}>
@@ -107,10 +103,7 @@ function App() {
         }
       </ul>
 
-      <footer>
-        <button onClick={newGame}>Nueva partida</button>
-        <button onClick={resetGame}>Reiniciar</button>
-      </footer>
+      <WinnerModal win={win} winner={winner} resetGame={resetGame} newGame={newGame} />
     </main>
   )
 }
