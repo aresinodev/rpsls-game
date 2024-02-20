@@ -23,7 +23,7 @@ function App() {
 
     if (player) {
       generateComputer = setTimeout(() => {
-        const index = Math.round(Math.random() * 5)
+        const index = Math.floor(Math.random() * 5)
         const newComputer = ELEMENTS.find(element => element.id === index)
         setComputer(newComputer)
 
